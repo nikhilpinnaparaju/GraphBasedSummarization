@@ -98,7 +98,7 @@ for k, sent_scores[k] in s:
 
 print("\n\n\n final summary \n\n\n")
 
-size = minimum(50,len(s))
+size = minimum(10,len(s))
 
 for i in range(size):
     print(s[i][0],".")
