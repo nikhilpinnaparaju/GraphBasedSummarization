@@ -23,6 +23,13 @@ data = data.replace("\n",' ')
 
 sent_tokenize_list = sent_tokenize(data)
 # print(sent_tokenize_list)
+
+f = open('sentence.txt','w')
+
+for i in sent_tokenize_list:
+    f.write(i)
+    f.write("\n")
+
 no_of_sents = len(sent_tokenize_list)
 
 table = data.maketrans('','',string.punctuation)
@@ -91,7 +98,7 @@ for k, sent_scores[k] in s:
 
 print("\n\n\n final summary \n\n\n")
 
-size = minimum(10,len(s))
+size = minimum(50,len(s))
 
 for i in range(size):
     print(s[i][0],".")

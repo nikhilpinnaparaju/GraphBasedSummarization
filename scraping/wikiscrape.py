@@ -1,19 +1,34 @@
 from bs4 import BeautifulSoup
 import requests
 
-url = "https://en.wikipedia.org/wiki/National_Pro_Grid_League"
-r = requests.get(url)
-soup = BeautifulSoup(r.content)
+url = raw_input("Enter a website to extract the URL's from: ")
+r  = requests.get(url)
 
-# print(soup)
+data = r.text
 
-heading = soup.find(id='Active_teams')
+# print data
 
-print(heading)
+soup = BeautifulSoup(data)
 
-teams = heading.find_next('ul')
+# print soup
 
-print(teams)
+# for link in soup.find_all('p'):
+#     # print(link.get('href'))
 
-# for team in teams:
-#     print team.string
+page = soup.find_all('p')
+
+# print page
+
+fname = url.split("/")
+
+fname = fname[len(fname)-1]
+
+fname = fname + ".txt"
+
+f = open(fname, 'w+')
+
+for i in page:
+    w = i.getText()
+    f.write(w.encode('utf8'))
+
+f.close
